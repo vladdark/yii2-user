@@ -9,7 +9,7 @@ use tests\_pages\LoginPage;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that login works');
-$I->haveFixtures(['user' => UserFixture::className()]);
+$I->haveFixtures(['user' => UserFixture::class]);
 
 $page = LoginPage::openBy($I);
 

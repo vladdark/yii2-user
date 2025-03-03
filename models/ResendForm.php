@@ -95,7 +95,7 @@ class ResendForm extends Model
         if ($user instanceof User && !$user->isConfirmed) {
             /** @var Token $token */
             $token = \Yii::createObject([
-                'class' => Token::className(),
+                'class' => Token::class,
                 'user_id' => $user->id,
                 'type' => Token::TYPE_CONFIRMATION,
             ]);

@@ -10,7 +10,7 @@ use tests\_pages\LoginPage;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that user creation works');
-$I->haveFixtures(['user' => UserFixture::className()]);
+$I->haveFixtures(['user' => UserFixture::class]);
 
 $loginPage = LoginPage::openBy($I);
 $user = $I->grabFixture('user', 'user');

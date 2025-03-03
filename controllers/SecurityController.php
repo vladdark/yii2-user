@@ -107,14 +107,14 @@ class SecurityController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     ['allow' => true, 'actions' => ['login', 'auth'], 'roles' => ['?']],
                     ['allow' => true, 'actions' => ['login', 'auth', 'logout'], 'roles' => ['@']],
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -127,7 +127,7 @@ class SecurityController extends Controller
     {
         return [
             'auth' => [
-                'class' => AuthAction::className(),
+                'class' => AuthAction::class,
                 // if user is not logged in, will try to log him in, otherwise
                 // will try to connect social account to user.
                 'successCallback' => \Yii::$app->user->isGuest
@@ -149,7 +149,7 @@ class SecurityController extends Controller
         }
 
         /** @var LoginForm $model */
-        $model = \Yii::createObject(LoginForm::className());
+        $model = \Yii::createObject(LoginForm::class);
         $event = $this->getFormEvent($model);
 
         $this->performAjaxValidation($model);
@@ -204,7 +204,7 @@ class SecurityController extends Controller
 
         if ($account === null) {
             /** @var Account $account */
-            $accountObj = \Yii::createObject(Account::className());
+            $accountObj = \Yii::createObject(Account::class);
             $account = $accountObj::create($client);
         }
 
@@ -236,7 +236,7 @@ class SecurityController extends Controller
     public function connect(ClientInterface $client)
     {
         /** @var Account $account */
-        $account = \Yii::createObject(Account::className());
+        $account = \Yii::createObject(Account::class);
         $event   = $this->getAuthEvent($account, $client);
 
         $this->trigger(self::EVENT_BEFORE_CONNECT, $event);

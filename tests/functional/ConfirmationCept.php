@@ -9,7 +9,7 @@ use yii\helpers\Url;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that confirmation works');
-$I->haveFixtures(['token' => TokenFixture::className()]);
+$I->haveFixtures(['token' => TokenFixture::class]);
 
 $I->amGoingTo('check that error is showed when token expired');
 $token = $I->grabFixture('token', 'expired_confirmation');

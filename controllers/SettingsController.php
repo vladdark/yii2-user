@@ -119,14 +119,14 @@ class SettingsController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'disconnect' => ['post'],
                     'delete'     => ['post'],
                 ],
             ],
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
                         'allow'   => true,
@@ -153,7 +153,7 @@ class SettingsController extends Controller
         $model = $this->finder->findProfileById(\Yii::$app->user->identity->getId());
 
         if ($model == null) {
-            $model = \Yii::createObject(Profile::className());
+            $model = \Yii::createObject(Profile::class);
             $model->link('user', \Yii::$app->user->identity);
         }
 
@@ -181,7 +181,7 @@ class SettingsController extends Controller
     public function actionAccount()
     {
         /** @var SettingsForm $model */
-        $model = \Yii::createObject(SettingsForm::className());
+        $model = \Yii::createObject(SettingsForm::class);
         $event = $this->getFormEvent($model);
 
         $this->performAjaxValidation($model);

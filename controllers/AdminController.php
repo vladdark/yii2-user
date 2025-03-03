@@ -166,7 +166,7 @@ class AdminController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete'          => ['post'],
                     'confirm'         => ['post'],
@@ -176,9 +176,9 @@ class AdminController extends Controller
                 ],
             ],
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'ruleConfig' => [
-                    'class' => AccessRule::className(),
+                    'class' => AccessRule::class,
                 ],
                 'rules' => [
                     [
@@ -203,7 +203,7 @@ class AdminController extends Controller
     public function actionIndex()
     {
         Url::remember('', 'actions-redirect');
-        $searchModel  = \Yii::createObject(UserSearch::className());
+        $searchModel  = \Yii::createObject(UserSearch::class);
         $dataProvider = $searchModel->search(\Yii::$app->request->get());
 
         return $this->render('index', [
@@ -222,7 +222,7 @@ class AdminController extends Controller
     {
         /** @var User $user */
         $user = \Yii::createObject([
-            'class'    => User::className(),
+            'class'    => User::class,
             'scenario' => 'create',
         ]);
         $event = $this->getUserEvent($user);
@@ -283,7 +283,7 @@ class AdminController extends Controller
         $profile = $user->profile;
 
         if ($profile == null) {
-            $profile = \Yii::createObject(Profile::className());
+            $profile = \Yii::createObject(Profile::class);
             $profile->link('user', $user);
         }
         $event = $this->getProfileEvent($profile);
@@ -352,9 +352,9 @@ class AdminController extends Controller
         $event = $this->getUserEvent($user);
 
         $this->trigger(self::EVENT_BEFORE_IMPERSONATE, $event);
-        
+
         Yii::$app->user->switchIdentity($user, 3600);
-        
+
         $this->trigger(self::EVENT_AFTER_IMPERSONATE, $event);
 
         return $this->goHome();

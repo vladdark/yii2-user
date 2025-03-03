@@ -9,7 +9,7 @@ use tests\_pages\ResendPage;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that resending of confirmation tokens works');
-$I->haveFixtures(['user' => UserFixture::className()]);
+$I->haveFixtures(['user' => UserFixture::class]);
 
 $I->amGoingTo('try to resend token to non-existent user');
 $page = ResendPage::openBy($I);

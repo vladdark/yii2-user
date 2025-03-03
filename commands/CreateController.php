@@ -36,8 +36,9 @@ class CreateController extends Controller
      */
     public function actionIndex($email, $username, $password = null)
     {
+        /* @var $user User*/
         $user = Yii::createObject([
-            'class'    => User::className(),
+            'class'    => User::class,
             'scenario' => 'create',
             'email'    => $email,
             'username' => $username,

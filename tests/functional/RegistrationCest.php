@@ -13,12 +13,12 @@ class RegistrationCest
 {
     public function _before(FunctionalTester $I)
     {
-        $I->haveFixtures(['user' => UserFixture::className()]);
+        $I->haveFixtures(['user' => UserFixture::class]);
     }
 
     public function _after(FunctionalTester $I)
     {
-        \Yii::$container->set(Module::className(), [
+        \Yii::$container->set(Module::class, [
             'enableConfirmation'       => true,
             'enableGeneratingPassword' => false,
         ]);
@@ -30,7 +30,7 @@ class RegistrationCest
      */
     public function testRegistration(FunctionalTester $I)
     {
-        \Yii::$container->set(Module::className(), [
+        \Yii::$container->set(Module::class, [
             'enableConfirmation'       => false,
             'enableGeneratingPassword' => false,
         ]);
@@ -52,7 +52,7 @@ class RegistrationCest
 
         $page->register('tester@example.com', 'tester', 'tester');
         $I->see('Your account has been created and a message with further instructions has been sent to your email');
-        $user = $I->grabRecord(User::className(), ['email' => 'tester@example.com']);
+        $user = $I->grabRecord(User::class, ['email' => 'tester@example.com']);
         $I->assertTrue($user->isConfirmed);
 
         $page = LoginPage::openBy($I);
@@ -66,14 +66,14 @@ class RegistrationCest
      */
     public function testRegistrationWithConfirmation(FunctionalTester $I)
     {
-        \Yii::$container->set(Module::className(), [
+        \Yii::$container->set(Module::class, [
             'enableConfirmation' => true,
         ]);
         $page = RegistrationPage::openBy($I);
         $page->register('tester@example.com', 'tester', 'tester');
         $I->see('Your account has been created and a message with further instructions has been sent to your email');
-        $user  = $I->grabRecord(User::className(), ['email' => 'tester@example.com']);
-        $token = $I->grabRecord(Token::className(), ['user_id' => $user->id, 'type' => Token::TYPE_CONFIRMATION]);
+        $user  = $I->grabRecord(User::class, ['email' => 'tester@example.com']);
+        $token = $I->grabRecord(Token::class, ['user_id' => $user->id, 'type' => Token::TYPE_CONFIRMATION]);
         /** @var yii\swiftmailer\Message $message */
         $message = $I->grabLastSentEmail();
         $I->assertArrayHasKey($user->email, $message->getTo());
@@ -87,14 +87,14 @@ class RegistrationCest
      */
     public function testRegistrationWithoutPassword(FunctionalTester $I)
     {
-        \Yii::$container->set(Module::className(), [
+        \Yii::$container->set(Module::class, [
             'enableConfirmation'       => false,
             'enableGeneratingPassword' => true,
         ]);
         $page = RegistrationPage::openBy($I);
         $page->register('tester@example.com', 'tester');
         $I->see('Your account has been created and a message with further instructions has been sent to your email');
-        $user = $I->grabRecord(User::className(), ['email' => 'tester@example.com']);
+        $user = $I->grabRecord(User::class, ['email' => 'tester@example.com']);
         $I->assertEquals('tester', $user->username);
         /** @var yii\swiftmailer\Message $message */
         $message = $I->grabLastSentEmail();

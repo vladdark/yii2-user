@@ -58,7 +58,7 @@ class Bootstrap implements BootstrapInterface
                 }
             }
 
-            Yii::$container->setSingleton(Finder::className(), [
+            Yii::$container->setSingleton(Finder::class, [
                 'userQuery'    => Yii::$container->get('UserQuery'),
                 'profileQuery' => Yii::$container->get('ProfileQuery'),
                 'tokenQuery'   => Yii::$container->get('TokenQuery'),
@@ -90,14 +90,14 @@ class Bootstrap implements BootstrapInterface
 
                 if (!$app->has('authClientCollection')) {
                     $app->set('authClientCollection', [
-                        'class' => Collection::className(),
+                        'class' => Collection::class,
                     ]);
                 }
             }
 
             if (!isset($app->get('i18n')->translations['user*'])) {
                 $app->get('i18n')->translations['user*'] = [
-                    'class' => PhpMessageSource::className(),
+                    'class' => PhpMessageSource::class,
                     'basePath' => __DIR__ . '/messages',
                     'sourceLanguage' => 'en-US'
                 ];
