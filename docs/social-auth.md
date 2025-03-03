@@ -13,7 +13,7 @@ To get started you should configure `authClientCollection` application component
 'components' => [
     ...
     'authClientCollection' => [
-        'class'   => \yii\authclient\Collection::className(),
+        'class'   => \yii\authclient\Collection::class,
         'clients' => [
             // here is the list of clients you want to use
             // you can read more in the "Available clients" section
@@ -151,7 +151,7 @@ The following config allows to log in using 3 networks (Twitter, Facebook and Go
 
 ```php
 'authClientCollection' => [
-    'class' => yii\authclient\Collection::className(),
+    'class' => yii\authclient\Collection::class,
     'clients' => [
         'facebook' => [
             'class'        => 'dektrium\user\clients\Facebook',

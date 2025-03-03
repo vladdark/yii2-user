@@ -23,9 +23,9 @@ class SiteController extends Controller
 	{
 		return [
 			'access' => [
-			    'class' => AccessControl::className(),
+			    'class' => AccessControl::class,
 			    'ruleConfig' => [
-			        'class' => AccessRule::className(),
+			        'class' => AccessRule::class,
 			    ],
 			    'rules' => [
 			        [

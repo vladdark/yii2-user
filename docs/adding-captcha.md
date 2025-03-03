@@ -84,7 +84,7 @@ form, just copy and paste following code into newly created view file.
 
                     <?= $form->field($model, 'password')->passwordInput() ?>
 
-                    <?= $form->field($model, 'captcha')->widget(Captcha::className(), [
+                    <?= $form->field($model, 'captcha')->widget(Captcha::class, [
                         'captchaAction' => ['/site/captcha']
                     ]) ?>
 

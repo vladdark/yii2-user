@@ -12,7 +12,7 @@ Yii2-user can be installed using composer. Run following command to download and
 install Yii2-user:
 
 ```bash
-composer require dektrium/yii2-user
+composer require vladdark/yii2-user:dev-master
 ```
 
 ### 2. Configure
@@ -36,7 +36,7 @@ migrations. Make sure that you have properly configured `db` application compone
 and run the following command:
 
 ```bash
-$ php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
+$ php yii migrate/up --migrationPath=@vendor/vladdark/yii2-user/migrations
 ```
 
 ## Where do I go now?
