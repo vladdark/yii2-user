@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use yii\bootstrap\Alert;
+use yii\bootstrap5\Alert;
 
 /**
  * @var dektrium\user\Module $module

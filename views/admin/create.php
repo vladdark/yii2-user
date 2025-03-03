@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
 
-use yii\bootstrap\ActiveForm;
-use yii\bootstrap\Nav;
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Nav;
 use yii\helpers\Html;
 
 /**
